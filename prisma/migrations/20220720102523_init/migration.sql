@@ -1,0 +1,21 @@
+-- CreateTable
+CREATE TABLE "Zombie" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "creationDate" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "ItemToZombie" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "zombieId" INTEGER NOT NULL,
+    "itemId" INTEGER NOT NULL,
+    CONSTRAINT "ItemToZombie_zombieId_fkey" FOREIGN KEY ("zombieId") REFERENCES "Zombie" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Item" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "price" REAL NOT NULL
+);
